@@ -5,7 +5,7 @@ set -x
 # Configure CLI (works the same as upstream Solana CLI)
 mkdir -p ~/.config/solana/cli
 cat <<EOF > ~/.config/solana/cli/config.yml
-json_rpc_url: "http://127.0.0.1:8899"
+json_rpc_url: "http://10.0.1.1:8899"
 websocket_url: ""
 keypair_path: /usr/src/solana/keys/solana-devnet.json
 EOF
@@ -30,7 +30,7 @@ retry () {
 }
 
 # Fund our account (as seen in solana-devnet.json).
-retry solana airdrop 1000 --faucet-port 9900 --faucet-host 127.0.0.1
+retry solana airdrop 1000 --faucet-port 9900 --faucet-host 10.0.1.1
 
 # Create a new SPL token
 token=$(spl-token create-token -- token.json | grep 'Creating token' | awk '{ print $3 }')

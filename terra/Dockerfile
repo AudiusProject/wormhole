@@ -19,6 +19,7 @@ ADD ./tools /app/tools
 
 RUN chmod +x /app/tools/deploy.sh
 
-RUN pip install -r /app/tools/requirements.txt
+# RUN ls -al /app/tools
+# RUN pip install -r /app/tools/requirements.txt
 
 ENTRYPOINT /app/tools/deploy.sh

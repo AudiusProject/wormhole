@@ -6,7 +6,7 @@ RUN rustup component add rustfmt
 
 WORKDIR /usr/src/bridge
 
-RUN sh -c "$(curl -sSfL https://release.solana.com/edge/install)"
+RUN sh -c "$(curl -sSfL https://release.solana.com/v1.7.8/install)"
 
 ENV PATH="/root/.local/share/solana/install/active_release/bin:$PATH"
 ENV RUST_LOG="solana_runtime::system_instruction_processor=trace,solana_runtime::message_processor=trace,solana_bpf_loader=debug,solana_rbpf=debug"

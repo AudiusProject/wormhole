@@ -16,7 +16,7 @@ import (
 
 var (
 	// Ganache RPC URL
-	GanacheRPCURL = "ws://localhost:8545"
+	GanacheRPCURL = "ws://10.0.1.1:8546"
 
 	// Address of the first account, which is used as the default client account.
 	GanacheClientDefaultAccountAddress = common.HexToAddress("0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1")

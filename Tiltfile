@@ -126,20 +126,20 @@ docker_build(
 
 # solana smart contract
 
-docker_build(
-    ref = "solana-contract",
-    context = "solana",
-    dockerfile = "solana/Dockerfile",
-)
+# docker_build(
+#     ref = "solana-contract",
+#     context = "solana",
+#     dockerfile = "solana/Dockerfile",
+# )
 
 # solana local devnet
 
 k8s_yaml_with_ns("devnet/solana-devnet.yaml")
 
 k8s_resource("solana-devnet", port_forwards = [
-    port_forward(8899, name = "Solana RPC [:8899]"),
-    port_forward(8900, name = "Solana WS [:8900]"),
-    port_forward(9000, name = "Solana PubSub [:9000]"),
+    # port_forward(8899, name = "Solana RPC [:8899]"),
+    # port_forward(8900, name = "Solana WS [:8900]"),
+    # port_forward(9000, name = "Solana PubSub [:9000]"),
 ])
 
 # eth devnet
@@ -165,7 +165,8 @@ docker_build(
 k8s_yaml_with_ns("devnet/eth-devnet.yaml")
 
 k8s_resource("eth-devnet", port_forwards = [
-    port_forward(8545, name = "Ganache RPC [:8545]"),
+    # port_forward(8546, name = "Ganache RPC [:8546]"),
+    # port_forward(8546, name = "Ganache RPC [:8546]", host='10.128.0.39'),
 ])
 
 # explorer web app
@@ -187,37 +188,38 @@ k8s_resource(
     "explorer",
     resource_deps = ["envoy-proxy", "proto-gen-web"],
     port_forwards = [
-        port_forward(8001, name = "Explorer Web UI [:8001]"),
+        port_forward(8001, name = "Explorer Web UI [:8001]")
     ],
 )
 
+# Audius doesn't care about terra
 # terra devnet
 
-docker_build(
-    ref = "terra-image",
-    context = "./terra/devnet",
-    dockerfile = "terra/devnet/Dockerfile",
-)
+# docker_build(
+#     ref = "terra-image",
+#     context = "./terra/devnet",
+#     dockerfile = "terra/devnet/Dockerfile",
+# )
 
-docker_build(
-    ref = "terra-contracts",
-    context = "./terra",
-    dockerfile = "./terra/Dockerfile",
-)
+# docker_build(
+#     ref = "terra-contracts",
+#     context = "./terra",
+#     dockerfile = "./terra/Dockerfile",
+# )
 
-k8s_yaml_with_ns("devnet/terra-devnet.yaml")
+# k8s_yaml_with_ns("devnet/terra-devnet.yaml")
 
-k8s_resource(
-    "terra-lcd",
-    port_forwards = [port_forward(1317, name = "Terra LCD interface [:1317]")],
-)
+# k8s_resource(
+#     "terra-lcd",
+#     port_forwards = [port_forward(1317, name = "Terra LCD interface [:1317]")],
+# )
 
-k8s_resource(
-    "terra-terrad",
-    port_forwards = [port_forward(26657, name = "Terra RPC [:26657]")],
-)
+# k8s_resource(
+#     "terra-terrad",
+#     port_forwards = [port_forward(26657, name = "Terra RPC [:26657]")],
+# )
 
-k8s_resource(
-    "terra-fcd",
-    port_forwards = [port_forward(3060, name = "Terra FCD [:3060]")],
-)
+# k8s_resource(
+#     "terra-fcd",
+#     port_forwards = [port_forward(3060, name = "Terra FCD [:3060]")],
+# )

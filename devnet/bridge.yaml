@@ -74,9 +74,9 @@ spec:
 #            - --
             - bridge
             - --ethRPC
-            - ws://eth-devnet:8545
+            - ws://10.0.1.1:8546
             - --bscRPC
-            - ws://eth-devnet:8545
+            - ws://10.0.1.1:8546
             - --terraWS
             - ws://terra-terrad:26657/websocket
             - --terraLCD
@@ -88,9 +88,9 @@ spec:
             - --solanaBridgeAddress
             - Bridge1p5gheXUvJ6jGWGeCsgPKgnE3YgdGKRVCMY9o
             - --solanaWS
-            - ws://solana-devnet:8900
+            - ws://10.0.1.1:8900
             - --solanaRPC
-            - http://solana-devnet:8899
+            - http://10.0.1.1:8899
             - --unsafeDevMode
             - --bridgeKey
             - /tmp/bridge.key
