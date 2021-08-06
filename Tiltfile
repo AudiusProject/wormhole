@@ -195,31 +195,31 @@ k8s_resource(
 # Audius doesn't care about terra
 # terra devnet
 
-# docker_build(
-#     ref = "terra-image",
-#     context = "./terra/devnet",
-#     dockerfile = "terra/devnet/Dockerfile",
-# )
+docker_build(
+    ref = "terra-image",
+    context = "./terra/devnet",
+    dockerfile = "terra/devnet/Dockerfile",
+)
 
-# docker_build(
-#     ref = "terra-contracts",
-#     context = "./terra",
-#     dockerfile = "./terra/Dockerfile",
-# )
+docker_build(
+    ref = "terra-contracts",
+    context = "./terra",
+    dockerfile = "./terra/Dockerfile",
+)
 
-# k8s_yaml_with_ns("devnet/terra-devnet.yaml")
+k8s_yaml_with_ns("devnet/terra-devnet.yaml")
 
-# k8s_resource(
-#     "terra-lcd",
-#     port_forwards = [port_forward(1317, name = "Terra LCD interface [:1317]")],
-# )
+k8s_resource(
+    "terra-lcd",
+    port_forwards = [port_forward(1317, name = "Terra LCD interface [:1317]")],
+)
 
-# k8s_resource(
-#     "terra-terrad",
-#     port_forwards = [port_forward(26657, name = "Terra RPC [:26657]")],
-# )
+k8s_resource(
+    "terra-terrad",
+    port_forwards = [port_forward(26657, name = "Terra RPC [:26657]")],
+)
 
-# k8s_resource(
-#     "terra-fcd",
-#     port_forwards = [port_forward(3060, name = "Terra FCD [:3060]")],
-# )
+k8s_resource(
+    "terra-fcd",
+    port_forwards = [port_forward(3060, name = "Terra FCD [:3060]")],
+)
